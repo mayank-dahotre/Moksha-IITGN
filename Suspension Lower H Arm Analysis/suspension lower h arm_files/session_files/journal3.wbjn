@@ -1,0 +1,70 @@
+# encoding: utf-8
+# 2024 R1
+SetScriptVersion(Version="24.1.144")
+system1 = GetSystem(Name="SYS 1")
+system1.Delete()
+system2 = GetSystem(Name="SYS")
+setup1 = system2.GetContainer(ComponentName="Setup")
+setup1.Edit()
+engineeringData1 = system2.GetContainer(ComponentName="Engineering Data")
+matl1 = engineeringData1.CreateMaterial(Name="Chromoly")
+matlProp1 = matl1.CreateProperty(
+    Name="Density",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp2 = matl1.CreateProperty(
+    Name="Coefficient of Thermal Expansion",
+    Definition="Secant",
+    Behavior="Isotropic",
+    Qualifiers={"Definition": "Secant", "Behavior": "Isotropic"})
+matlProp3 = matl1.CreateProperty(
+    Name="Elasticity",
+    Behavior="Isotropic",
+    Qualifiers={"Definition": "", "Behavior": "Isotropic"})
+matlProp4 = matl1.CreateProperty(
+    Name="Tensile Yield Strength",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp5 = matl1.CreateProperty(
+    Name="Tensile Ultimate Strength",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp2.SetData(
+    SheetName="Coefficient of Thermal Expansion",
+    SheetQualifiers={"Definition": "Secant", "Behavior": "Isotropic"},
+    Index=-1,
+    Variables=["Coefficient of Thermal Expansion"],
+    Values=[["11200000 [C^-1]"]])
+matlProp3.SetQualifier(
+    Qualifier="Derive from",
+    Value="Shear Modulus and Poisson's Ratio")
+matlProp3.SetData(
+    Index=-1,
+    Variables=["Poisson's Ratio"],
+    Values=[["0.285"]])
+matlProp3.SetVariableProperty(
+    VariableName="Shear Modulus",
+    Property="Unit",
+    Value="MPa")
+matlProp3.SetData(
+    Variables=["Shear Modulus"],
+    Values=[["7.8886090522101181E-31 [MPa]"]])
+matlProp4.SetVariableProperty(
+    VariableName="Tensile Yield Strength",
+    Property="Unit",
+    Value="MPa")
+matlProp5.SetVariableProperty(
+    VariableName="Tensile Ultimate Strength",
+    Property="Unit",
+    Value="MPa")
+matlProp4.SetData(
+    Index=-1,
+    Variables=["Tensile Yield Strength"],
+    Values=[["720 [MPa]"]])
+matlProp5.SetData(
+    Index=-1,
+    Variables=["Tensile Ultimate Strength"],
+    Values=[["8 [MPa]"]])
+matlProp4.SetData(
+    Variables=["Tensile Yield Strength"],
+    Values=[["780 [MPa]"]])
+matlProp5.SetData(
+    Variables=["Tensile Ultimate Strength"],
+    Values=[["820 [MPa]"]])
