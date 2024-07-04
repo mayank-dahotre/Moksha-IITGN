@@ -1,0 +1,28 @@
+# encoding: utf-8
+# 2024 R1
+SetScriptVersion(Version="24.1.144")
+template1 = GetTemplate(
+    TemplateName="Static Structural",
+    Solver="ANSYS")
+system1 = template1.CreateSystem()
+template2 = GetTemplate(TemplateName="LSDYNA")
+system2 = template2.CreateSystem(
+    Position="Right",
+    RelativeTo=system1)
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.SetFile(FilePath="C:/Users/91982/Desktop/Front_Lower_A_Arm(final)(updated)_2.IGS")
+modelComponent1 = system1.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Edit()
+model1.Exit()
+geometry1.Edit()
+geometry1.Exit()
+modelComponent1.Refresh()
+model1.Edit()
+model1.Edit()
+Save(Overwrite=True)
+geometry2 = system2.GetContainer(ComponentName="Geometry")
+geometry2.Edit(IsDiscoveryGeometry=True)
+model1.Exit()
+Save(Overwrite=True)
