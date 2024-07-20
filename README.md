@@ -3,7 +3,7 @@ Moksha is the Motorsports Club of IIT Gandhinagar<br>
 Was a part of the Design & Analysis Team as an Analysis member for the eBAJA Team '24<br>
 Used ANSYS & SolidWorks for Analysis and Modelling of eBAJA ATV for eBAJA '24<be>
 
-the parts I analysed
+the parts I analysed<br>
 -Chassis<br>
 -Knuckle<br>
 -Brake Rotor<br>
